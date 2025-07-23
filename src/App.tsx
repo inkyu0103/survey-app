@@ -1,8 +1,8 @@
 import { Route, Routes } from "react-router";
-import About from "./pages/About";
 import Home from "./pages/Home";
 import Results from "./pages/Results";
 import Survey from "./pages/Survey";
+import UserInfo from "./pages/UserInfo";
 
 function App() {
   return (
@@ -10,7 +10,7 @@ function App() {
       <Route path="/" element={<Home />} />
       <Route path="/survey" element={<Survey />} />
       <Route path="/results" element={<Results />} />
-      <Route path="/about" element={<About />} />
+      <Route path="/user-info" element={<UserInfo />} />
     </Routes>
   );
 }

@@ -41,7 +41,7 @@ export default function HomePage() {
 
       {/* Fixed CTA Button */}
       <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 w-full max-w-2xl px-4">
-        <Link to="/survey">
+        <Link to="/user-info">
           <Button className="w-full" variant="default" size="lg">
             🎯 설문 시작하고 평가 리포트 받기
           </Button>
