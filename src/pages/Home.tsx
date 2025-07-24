@@ -2,10 +2,10 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import {
   BadgeCheckIcon,
+  CircleDollarSignIcon,
   RocketIcon,
   ShieldCheckIcon,
   TrendingDownIcon,
-  TrendingUpIcon,
 } from "lucide-react";
 import { Link } from "react-router";
 
@@ -24,7 +24,7 @@ export default function HomePage() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+        <div className="flex flex-col gap-6 max-w-2xl mx-auto">
           {features.map((feature) => (
             <Card key={feature.title} className="p-0">
               <CardContent className="space-y-2 p-6">
@@ -59,7 +59,7 @@ const features = [
       "더 낮은 세율로 세금을 줄이고 성실신고확인 대상에서도 벗어날 수 있어요.",
   },
   {
-    icon: TrendingUpIcon,
+    icon: CircleDollarSignIcon,
     title: "자금 조달이 쉬워짐",
     description:
       "대출, 투자, 정부 지원 등 자금 확보가 개인사업자보다 유리합니다.",
