@@ -4,12 +4,14 @@ import { Progress } from "@/components/ui/progress";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useState } from "react";
+import { useNavigate } from "react-router";
 
 export default function Survey() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState<Record<number, number>>({});
 
   const progress = ((currentQuestion + 1) / surveyQuestions.length) * 100;
+  const navigate = useNavigate();
 
   const handleAnswer = (value: string) => {
     const optionIndex = parseInt(value);
@@ -25,7 +27,7 @@ export default function Survey() {
     } else {
       // 설문 완료 처리
       console.log("설문 완료:", answers);
-      alert("설문이 완료되었습니다!");
+      navigate("/results");
     }
   };
 
@@ -35,7 +37,10 @@ export default function Survey() {
     }
   };
 
-  const canGoNext = answers.hasOwnProperty(currentQuestion);
+  const canGoNext = Object.prototype.hasOwnProperty.call(
+    answers,
+    currentQuestion
+  );
   const isLastQuestion = currentQuestion === surveyQuestions.length - 1;
   const currentQuestionData = surveyQuestions[currentQuestion];
 
