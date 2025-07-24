@@ -3,15 +3,33 @@ import { Label } from "@/components/ui/label";
 import { Progress } from "@/components/ui/progress";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 
 export default function Survey() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState<Record<number, number>>({});
+  const [isCompleted, setIsCompleted] = useState(false);
 
   const progress = ((currentQuestion + 1) / surveyQuestions.length) * 100;
   const navigate = useNavigate();
+
+  // 설문 완료 전 페이지 이탈 방지
+  useEffect(() => {
+    const handleBeforeUnload = (e: BeforeUnloadEvent) => {
+      if (!isCompleted) {
+        e.preventDefault();
+        e.returnValue = "설문이 완료되지 않았습니다. 정말로 나가시겠습니까?";
+        return "설문이 완료되지 않았습니다. 정말로 나가시겠습니까?";
+      }
+    };
+
+    window.addEventListener("beforeunload", handleBeforeUnload);
+
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
+  }, [isCompleted]);
 
   const handleAnswer = (value: string) => {
     const optionIndex = parseInt(value);
@@ -27,7 +45,8 @@ export default function Survey() {
     } else {
       // 설문 완료 처리
       console.log("설문 완료:", answers);
-      navigate("/results");
+      setIsCompleted(true);
+      navigate("/results", { replace: true });
     }
   };
 

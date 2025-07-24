@@ -18,7 +18,6 @@ export default function UserInfo() {
   const [formData, setFormData] = useState({
     companyName: "",
     businessStartDate: "",
-    mainBusiness: "",
     businessGroup: "",
     businessType: "",
   });
@@ -57,8 +56,8 @@ export default function UserInfo() {
   return (
     <div className="min-h-screen p-8">
       <div className="max-w-2xl mx-auto">
-        <h1 className="text-center text-xl font-semibold mb-8">
-          대표님의 사업에 대해 간단히 알려주세요
+        <h1 className=" text-xl font-semibold mb-8 whitespace-pre-line">
+          {"대표님의 사업 정보를\n간단히 입력해주세요."}
         </h1>
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* 상호 */}
