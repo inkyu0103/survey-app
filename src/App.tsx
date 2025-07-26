@@ -3,6 +3,7 @@ import Home from "./pages/Home";
 import Results from "./pages/Results";
 import Survey from "./pages/Survey";
 import UserInfo from "./pages/UserInfo";
+import Admin from "./pages/admin";
 import Evaluate from "./pages/evaluate";
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
       <Route path="/results" element={<Results />} />
       <Route path="/user-info" element={<UserInfo />} />
       <Route path="/evaluate" element={<Evaluate />} />
+      <Route path="/admin" element={<Admin />} />
     </Routes>
   );
 }
